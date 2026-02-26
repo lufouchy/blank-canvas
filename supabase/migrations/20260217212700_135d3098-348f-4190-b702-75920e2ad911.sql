@@ -1,0 +1,1 @@
+ALTER TYPE public.absence_type ADD VALUE IF NOT EXISTS 'bereavement_leave';

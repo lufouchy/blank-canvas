@@ -1,0 +1,259 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    /* Color palette: Blue Green, Deep Space Blue, Sky Blue, Amber, Orange */
+    --background: 0 0% 98%;
+    --foreground: 200 95% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 200 95% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 95% 14%;
+
+    /* Primary - Blue Green #219EBC */
+    --primary: 192 70% 43%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Light gray */
+    --secondary: 199 65% 95%;
+    --secondary-foreground: 200 95% 14%;
+
+    /* Muted */
+    --muted: 199 30% 94%;
+    --muted-foreground: 200 20% 40%;
+
+    /* Accent - Sky Blue Light #8ECAE6 */
+    --accent: 199 65% 73%;
+    --accent-foreground: 200 95% 14%;
+
+    /* Status colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning - Amber Flame #FFB703 */
+    --warning: 43 100% 51%;
+    --warning-foreground: 200 95% 14%;
+
+    /* Orange accent - Princeton Orange #FB8500 */
+    --orange: 32 100% 49%;
+    --orange-foreground: 0 0% 100%;
+
+    /* UI elements */
+    --border: 199 30% 88%;
+    --input: 199 30% 88%;
+    --ring: 192 70% 43%;
+
+    --radius: 0.75rem;
+
+    /* Custom gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(192, 70%, 43%) 0%, hsl(199, 65%, 73%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0, 0%, 100%) 0%, hsl(199, 30%, 98%) 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-primary: 0 10px 40px -10px hsl(192, 70%, 43%, 0.4);
+
+    /* Sidebar - Deep Space Blue #023047 */
+    --sidebar-background: 200 95% 14%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 192 70% 43%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 199 65% 73%;
+    --sidebar-accent-foreground: 200 95% 14%;
+    --sidebar-border: 200 60% 25%;
+    --sidebar-ring: 192 70% 43%;
+  }
+
+  .dark {
+    /* Dark mode - Deep Space Blue based */
+    --background: 200 95% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 200 80% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 200 80% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 192 70% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 200 60% 18%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 200 40% 18%;
+    --muted-foreground: 199 30% 65%;
+
+    --accent: 199 50% 25%;
+    --accent-foreground: 199 65% 80%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 70% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 43 100% 55%;
+    --warning-foreground: 200 95% 14%;
+
+    --orange: 32 100% 52%;
+    --orange-foreground: 0 0% 100%;
+
+    --border: 200 50% 22%;
+    --input: 200 50% 22%;
+    --ring: 192 70% 50%;
+
+    --sidebar-background: 200 95% 8%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 192 70% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 199 50% 25%;
+    --sidebar-accent-foreground: 199 65% 80%;
+    --sidebar-border: 200 50% 22%;
+    --sidebar-ring: 192 70% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .card-elevated {
+    @apply bg-card rounded-xl border border-border shadow-md;
+  }
+
+  .btn-punch {
+    @apply relative overflow-hidden bg-primary text-primary-foreground rounded-full font-semibold text-lg py-6 px-12 transition-all duration-300 ease-out;
+    box-shadow: var(--shadow-primary);
+  }
+
+  .btn-punch:hover {
+    @apply scale-105;
+    box-shadow: 0 15px 50px -10px hsl(192, 70%, 43%, 0.5);
+  }
+
+  .btn-punch:active {
+    @apply scale-95;
+  }
+
+  .status-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .status-working {
+    @apply bg-success/10 text-success;
+  }
+
+  .status-absent {
+    @apply bg-muted text-muted-foreground;
+  }
+
+  .status-warning {
+    @apply bg-warning/10 text-warning;
+  }
+
+  .status-alert {
+    @apply bg-destructive/10 text-destructive;
+  }
+
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-lg border border-white/20 rounded-2xl;
+  }
+
+  .time-display {
+    @apply text-6xl font-light tracking-tight tabular-nums;
+  }
+
+  .balance-positive {
+    @apply text-success font-semibold;
+  }
+
+  .balance-negative {
+    @apply text-destructive font-semibold;
+  }
+
+  .table-row-weekend {
+    @apply bg-muted/50;
+  }
+
+  .table-row-alert {
+    @apply bg-destructive/5;
+  }
+
+  .pulse-ring {
+    @apply absolute inset-0 rounded-full animate-ping bg-primary/30;
+  }
+
+  .bg-deep-space {
+    background-color: hsl(200, 95%, 14%);
+  }
+
+  .text-sky-light {
+    color: hsl(199, 65%, 73%);
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from { 
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to { 
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
