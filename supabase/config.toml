@@ -1,7 +1,1 @@
-project_id = "hfsdzfocmcfirbtfactk"
-
-[functions.create-employee]
-verify_jwt = false
-
-[functions.update-password]
-verify_jwt = false
+project_id = "ostpzuyafditjuhjktjw"
