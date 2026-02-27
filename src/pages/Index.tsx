@@ -20,9 +20,13 @@ const Index = () => {
     return <Navigate to="/auth" replace />;
   }
 
+  if (userRole === 'suporte') {
+    return <Navigate to="/gestor" replace />;
+  }
+
   return (
     <SidebarLayout>
-      {(userRole === 'admin' || userRole === 'suporte') ? <AdminDashboard /> : <EmployeeDashboard />}
+      {userRole === 'admin' ? <AdminDashboard /> : <EmployeeDashboard />}
     </SidebarLayout>
   );
 };

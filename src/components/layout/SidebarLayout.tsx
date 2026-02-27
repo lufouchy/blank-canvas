@@ -19,6 +19,7 @@ import {
   Building2,
   BarChart3,
 } from 'lucide-react';
+import { Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import logoVertical from '@/assets/logo-vertical.png';
@@ -34,6 +35,7 @@ interface SidebarLayoutProps {
 
 const SidebarLayout = ({ children }: SidebarLayoutProps) => {
   const { userRole, profile, signOut } = useAuth();
+  const isSuporte = userRole === 'suporte';
   const navigate = useNavigate();
   const location = useLocation();
   const [collapsed, setCollapsed] = useState(false);
@@ -51,6 +53,7 @@ const SidebarLayout = ({ children }: SidebarLayoutProps) => {
         { icon: FolderOpen, label: 'Espelhos Ponto', path: '/documents' },
         { icon: BarChart3, label: 'Relatórios Gerenciais', path: '/reports' },
         { icon: Settings, label: 'Configurações', path: '/settings' },
+        ...(isSuporte ? [{ icon: Shield, label: 'Gestão do Sistema', path: '/gestor' }] : []),
       ]
     : [
         { icon: Home, label: 'Início', path: '/' },

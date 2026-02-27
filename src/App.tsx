@@ -5,7 +5,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import AdminRoute from "@/components/auth/AdminRoute";
+import GestorRoute from "@/components/auth/GestorRoute";
 import Index from "./pages/Index";
+import GestorDashboard from "./pages/GestorDashboard";
 import Auth from "./pages/Auth";
 import ResetPassword from "./pages/ResetPassword";
 import RequestsPage from "./pages/RequestsPage";
@@ -46,6 +48,7 @@ const App = () => (
             <Route path="/reports" element={<AdminRoute><ManagementReports /></AdminRoute>} />
             <Route path="/settings" element={<AdminRoute><AdminSettings /></AdminRoute>} />
             <Route path="/institutional" element={<AdminRoute><InstitutionalInfo /></AdminRoute>} />
+            <Route path="/gestor" element={<GestorRoute><GestorDashboard /></GestorRoute>} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
