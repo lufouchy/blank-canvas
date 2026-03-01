@@ -174,21 +174,13 @@ const CompanyInfoForm = ({ companyId, onSave }: CompanyInfoFormProps) => {
 
       const existingCodes = new Set((allOrgs || []).map(o => o.org_code));
 
-      let code = '';
-      let startIndex = 0;
-      
-      while (startIndex + 5 <= cnpjDigits.length) {
-        const candidate = cnpjDigits.substring(startIndex, startIndex + 5);
-        if (!existingCodes.has(candidate)) {
-          code = candidate;
-          break;
-        }
-        startIndex++;
+      // Use first 5 digits of CNPJ, increment if already exists
+      const base = parseInt(cnpjDigits.substring(0, 5), 10);
+      let candidate = base;
+      while (existingCodes.has(String(candidate).padStart(5, '0'))) {
+        candidate++;
       }
-
-      if (!code) {
-        code = cnpjDigits.substring(0, 5) + cnpjDigits.substring(cnpjDigits.length - 1);
-      }
+      const code = String(candidate).padStart(5, '0');
 
       await supabase
         .from('organizations')
